@@ -54,15 +54,16 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required|min:5|max:150',
+            'name' => 'required|max:150',
             'level' => 'required|integer|in:1,2,3,4',
             'link' => 'required',
+            'point' => 'required',
             
         ];
 
         $this->validate($request, $rules);
 
-        $course = course::create($request->merge(["level" => $request->get('level')])->all());
+        $course = course::create($request->merge(["level" => $request->get('level'),"point" => $request->get('point')])->all());
 
         if($course) {
             
@@ -117,7 +118,7 @@ class CourseController extends Controller
     public function update(Request $request,course $course)
     {
         $rules = [
-            'name' => 'required|min:5|max:150',
+            'name' => 'required|max:150',
            // 'level' => 'required|integer|in:1,2,3,4',
            // 'link' => 'required|url',
             
@@ -125,7 +126,7 @@ class CourseController extends Controller
 
         $this->validate($request, $rules);
 
-        $course->update($request->merge(["level" => $request->get('level')])->all());
+        $course->update($request->merge(["level" => $request->get('level'),"point" => $request->get('point')])->all());
 
         
             

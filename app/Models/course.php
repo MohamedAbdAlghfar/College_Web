@@ -18,7 +18,7 @@ class course extends Model
         'level',
         'deleted_by',
         'enrollment_status',
-        
+        'point',
     ];
    
     public function photo() {

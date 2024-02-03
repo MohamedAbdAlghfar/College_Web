@@ -46,8 +46,11 @@
 <div>
                                  <!-- level  --> 
                                  <label class="form-control-label" for="input-level">{{ __('Level') }}</label>
-                                 <input type="text" placeholder="{{ __('Level') }}" value="{{ old('level', $course->level) }}"  name="level"/>
+                                 <input type="text" placeholder="{{ __('Level') }}" value="{{ old('level', $course->level) }}"  name="level"/><br><br>
                                <!-- level  -->                              
+
+                               <label class="form-control-label" for="input-point">{{ __('Point') }}</label>
+                                 <input type="number" placeholder="{{ __('Point') }}" value="{{ old('point', $course->point) }}"  name="point"/>
 </div>
 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

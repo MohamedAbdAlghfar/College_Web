@@ -59,8 +59,9 @@
                                     @endif
                                 </div>
                               <!-- level  --> 
-                              <input type="text" placeholder="LeveL" name="level"/>
+                              <input type="text" placeholder="LeveL" name="level"/><br><br>
                                <!-- level  --> 
+                               <input type="number" placeholder="point" name="point"/> 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>
