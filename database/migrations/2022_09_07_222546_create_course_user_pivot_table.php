@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('course_user', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('course_id')->unsigned();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-
+            
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('course_id');
+            $table->integer('pass_course')->default(0);  // 0 => current student course , 1 => passed course , -1 => failed course  
+            $table->integer('grade')->default(null)->nullable();
+            $table->timestamps();
 
         });
     }

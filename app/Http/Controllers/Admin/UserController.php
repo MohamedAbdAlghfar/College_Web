@@ -64,13 +64,21 @@ public function store(UserRequest $request, User $model)
             'email' => 'required|email',
             'password' => 'nullable|min:6|confirmed',
         ];
- 
+    
         $this->validate($request, $rules);
-
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+    
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'admin' => $request->input('admin'),
+            'level' => $request->input('level'),
+        ];
+    
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+    
+        $user->update($data);
 
         return redirect()->route('users.index')->withStatus(__('User successfully updated.'));
     }

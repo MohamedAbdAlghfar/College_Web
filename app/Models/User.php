@@ -21,8 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-         'admin',
-      'level', 
+        'admin',
+        'level', 
+        'gpa',  
+        'total_hours',
     ];
 
     /**
@@ -40,7 +42,7 @@ class User extends Authenticatable
     }
 
     public function courses() {
-        return $this->belongsToMany('App\Models\Course');
+        return $this->belongsToMany('App\Models\Course')->withPivot('pass_course','grade');
     }
 
 

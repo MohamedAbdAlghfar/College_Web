@@ -44,6 +44,14 @@
                                         </span>
                                     @endif
                                 </div>
+                            
+                                <label class="form-control-label" for="input-level">{{ __('Level') }}</label>
+                                    <input type="number" name="level" id="input-level" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Level') }}" value="{{ old('name', $user->level) }}" required autofocus>
+
+                                    <label class="form-control-label" for="input-admin">{{ __('Role') }}</label>
+                                    <input type="number" name="admin" id="input-admin" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Role') }}" value="{{ old('name', $user->admin) }}" required autofocus>
+
+                            
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="">

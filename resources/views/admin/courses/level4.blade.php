@@ -45,9 +45,9 @@
                         <div class="col-sm-3">
                             <div class="card">
                                 @if($course->photo)
-                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo">
+                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo" style="width: 100px; height: 100px;">
                                 @else
-                                <img  src="/images/default.jpeg" class="card-img-top" alt="Course Photo">
+                                <img  src="/images/default.jpeg" class="card-img-top" alt="Course Photo" style="width: 100px; height: 100px;">
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ \Str::limit($course->name, 100) }}</h5>

@@ -4,13 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 class course extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+    
     protected $fillable = [
         'name',
         'link',
-        'level'
+        'level',
+        'deleted_by',
+        'enrollment_status',
         
     ];
    
@@ -32,7 +39,16 @@ public function quizzes()
 
 
 public function Users() {
-    return $this->belongsToMany('App\Models\User');
+    return $this->belongsToMany('App\Models\User')->withPivot('pass_course','grade');
+}
+protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function ($course) {
+        $course->deleted_by = Auth::user()->id;
+        $course->save();
+    });
 }
 
 

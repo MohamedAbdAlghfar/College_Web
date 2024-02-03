@@ -43,8 +43,11 @@ class questionController extends Controller
         
         $rules = [
             'title' => 'required|min:3',
-            'answers'=> 'required|min:10',
-            'right_answer' => 'required|min:5',
+            'choice1'=> 'required',
+            'choice2'=> 'required',
+            'choice3',
+            'choice4',
+            'right_answer' => 'required',
             'quiz_id' => 'required|integer',
         ];
 
@@ -95,8 +98,11 @@ class questionController extends Controller
     {
         $rules = [
             'title' => 'required|min:3',
-            'answers'=> 'required|min:10',
-            'right_answer' => 'required|min:5',
+            'choice1'=> 'required',
+            'choice2'=> 'required',
+            'choice3',
+            'choice4',
+            'right_answer' => 'required|min:1',
             'quiz_id' => 'required|integer',
         ];
 

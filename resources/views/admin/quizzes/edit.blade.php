@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">{{ __('quiz Management') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('courses.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                                <a href="{{ route('courses.show', $quiz->course->id) }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                             </div>
                         </div>
                     </div>

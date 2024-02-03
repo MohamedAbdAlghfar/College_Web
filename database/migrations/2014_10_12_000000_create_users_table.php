@@ -22,7 +22,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('admin')->default(0);
+            $table->float('gpa')->default(2);
             $table->integer('level')->default(1);
+            $table->integer('total_hours')->default(0);
 
                   
         });

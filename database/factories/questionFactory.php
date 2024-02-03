@@ -16,12 +16,19 @@ class questionFactory extends Factory
      */
     public function definition()
     {
-        $answers = $this->faker->paragraph; 
-        $right_answer = $this->faker->randomElement(explode(' ', $answers));
+        $choice1 = $this->faker->word;  
+        $choice2 = $this->faker->word;
+        $choice3 = $this->faker->word;
+        $choice4 = $this->faker->word;
+        $choices = [$choice1, $choice2, $choice3, $choice4];
+        $right_answer = $this->faker->randomElement($choices);
         
         return [
             'title' => $this->faker->sentence,
-            'answers' => $answers,
+            'choice1' => $choice1,
+            'choice2' => $choice2,
+            'choice3' => $choice3,
+            'choice4' => $choice4,
             'right_answer' => $right_answer,
             
             

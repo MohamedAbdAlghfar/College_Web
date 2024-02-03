@@ -1,4 +1,22 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
+    <style type="text/css">
+
+
+   
+.back-button {
+  background-color: red;
+  color: white;
+  border: 1px solid black;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+   </style>
+  </head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,12 +108,23 @@
         <!-- Form -->
        
         <!-- Navigation -->
+        <img src="/images/college logo.jpg" class="card-img-top rounded-circle" alt="LOGO" style="width: 100px; height: 100px;">
+
+<br><br>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+               
                 </a>
-            </li>
+            </li> 
+  
+            <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home.user') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('User_Side') }}
+                    </a>
+                </li>
+
             <li class="nav-item">
                     <a class="nav-link active" href="#admin" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fas fa-user-secret" style="color: #f4645f;"></i>
@@ -165,7 +194,11 @@
                         <i class="ni ni-planet text-blue"></i> {{ __('quizzes') }}
                     </a>
                 </li>
-                
+
+
+
+
+
         </ul>
         <!-- Divider -->
         <hr class="my-3">
@@ -320,6 +353,7 @@
                                                         <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a> -->
                                                     @endif 
  </td>
+ <td> <a class="back-button" href="{{ route('ShowCurrentCourse.showAdminCurrentCourses', $user) }}">put Grade</a> </td>                             
                                 </tr>
                                 @endforeach
                                                         </tbody>

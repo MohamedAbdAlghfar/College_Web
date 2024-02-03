@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('question Management')])
 
 @section('content')
-    @include('admin.users.partials.header', ['title' => __('Add Question')])   
+    @include('admin.users.partials.header', ['title' => __('Add Question')])    
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -23,7 +23,7 @@
                             <h6 class="heading-small text-muted mb-4">{{ __('Question information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-title">{{ __('Question Name') }}</label>
+                                    <label class="form-control-label" for="input-title">{{ __('Question ') }}</label>
                                     <input type="text" name="title" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('Title') }}" value="{{ old('title') }}" required autofocus>
 
                                     @if ($errors->has('title'))
@@ -32,10 +32,35 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div>
-                                <label class="form-control-label" for="input-title">{{ __('Answers as words') }}</label>
-                                    <input type="text" name="answers" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('answers') }}" value="{{ old('answers') }}" required autofocus>
-                             </div>
+                            
+
+
+
+                                <h6 class="heading-small text-muted mb-4">{{ __('Choices') }}</h6> 
+
+                                
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice1">{{ __('Choice1') }}</label>
+                                        <input type="text" name="choice1" id="choice1" class="form-control" placeholder="Choice1" required>
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice2">{{ __('Choice2') }}</label>
+                                        <input type="text" name="choice2" id="choice2" class="form-control" placeholder="Choice2" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice3">{{ __('Choice3') }}</label>
+                                        <input type="text" name="choice3" id="choice3" class="form-control" placeholder="Choice3" >
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice4">{{ __('Choice4') }}</label>
+                                        <input type="text" name="choice4" id="choice4" class="form-control" placeholder="Choice4" >
+                                    </div>
+
+
+
 
                              <div>
                                 <label class="form-control-label" for="input-title">{{ __('Right Answer') }}</label>

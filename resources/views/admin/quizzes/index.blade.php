@@ -1,57 +1,76 @@
-<!doctype html>
-   <body bgcolor="yellow">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes</title>
+    <style>
+        body {
+            background-color: #157DEC;
+        }
+        .card-container {
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: space-around; 
+            padding: 20px;
+        }
+        .card {
+            width: 300px;
+            margin: 10px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
+        .back-button {
+  background-color: red; 
+  color: white;
+  border: 1px solid black;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+} 
 
-   <h3 align="center"> QUIZZES     </h3>       
-   <a href="{{route('home') }}"> BACK </a>
-<table class="table align-items-center table-flush" width = "100%" bgcolor="white" >
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">No. questions</th>
-                                <th scope="col">Course</th>
-                                
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($quizzes as $quiz)                                <tr>
-                        <td align="center">
-                                     <a href="{{ route('quizzes.show',$quiz) }}"> {{ $quiz->name }}</a> </td>   
-                                      @if($quiz->questions)
-                                        <td align="center">{{ count($quiz->questions) }}</td>
-                                        @endif 
-                                    
-                                    <td align="center">
-                                      {{ $quiz->course->name }}</td>
-                                   <!-- <td class="text-right">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                                                        <a class="dropdown-item" href="">Edit</a>
-                                                                                                </div>
-                                        </div>
-                                    </td>   -->
-                             
-                                </tr>
-                                @endforeach
-                                                        </tbody>
-                    </table>
+.logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Make the logo circular */
+        }
 
-</div>
-<td>
-</table>
+    </style>
+</head>
+<body>
 
+    <h3 align="center">QUIZZES</h3>
+    <img src="/images/college logo.jpg" class="logo" alt="LOGO" style="width: 100px; height: 100px;">    
 
-
-
-
-
-
-
-
-  </body>
-
+    <div class="card-container">
+        @foreach($quizzes as $quiz)
+            <div class="card">
+                <h5>Name: <a href="{{ route('quizzes.show', $quiz) }}">{{ $quiz->name }}</a></h5>
+                @if($quiz->questions)
+                    <p>No. Questions: {{ count($quiz->questions) }}</p>
+                @endif 
+                @if ($quiz->course)
+    <p>Course: {{ $quiz->course->name }}</p>
+@else
+    <p>No course associated with this quiz</p>
+@endif
+                <!-- Add additional details as needed -->
+                <!-- Example: <p>Some additional details</p> -->
+                <!-- Uncomment and customize the code below if you want to add an edit button -->
+                <!--
+                <a href="#" class="btn btn-primary">Edit</a>
+                -->
+            </div>
+        @endforeach
+    </div>
+    <a href="{{ route('home') }}" class="back-button">Back</a>
+</body>
 </html>

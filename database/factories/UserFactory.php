@@ -23,8 +23,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
-             'admin' => $this->faker->randomElement([0,1]),
-             'level' => $this->faker->randomElement([2,1,3,4]),
+            'admin' => $this->faker->randomElement([0,1]),
+            'level' => $this->faker->randomElement([2,1,3,4]),
+            'gpa' =>  $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 4),
+            'total_hours' => $this->faker->randomElement([15,18]),      
         ];
     }
 

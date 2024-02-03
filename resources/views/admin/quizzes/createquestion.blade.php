@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('question Management')])
+@extends('layouts.app', ['title' => __('Question Management')])
 
 @section('content')
     @include('admin.users.partials.header', ['title' => __('Add Question')])   
@@ -23,7 +23,7 @@
                             <h6 class="heading-small text-muted mb-4">{{ __('Question information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-title">{{ __('Question Name') }}</label>
+                                    <label class="form-control-label" for="input-title">{{ __('Question') }}</label>
                                     <input type="text" name="title" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('Title') }}" value="{{ old('title') }}" required autofocus>
 
                                     @if ($errors->has('title'))
@@ -32,32 +32,14 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div>
-                                <label class="form-control-label" for="input-title">{{ __('Answers as words') }}</label>
-                                    <input type="text" name="answers" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('answers') }}" value="{{ old('answers') }}" required autofocus>
-                             </div>
-
-                             <div>
-                                <label class="form-control-label" for="input-title">{{ __('Right Answer') }}</label>
-                                    <input type="text" name="right_answer" id="input-title" class="form-control form-control-alternative{{ $errors->has('right_answer') ? ' is-invalid' : '' }}" placeholder="{{ __('right_answer') }}" value="{{ old('right_answer') }}" required autofocus>
-                             </div>
 
 
 
-
-
-
-
-
-
-                                
-                             <div class="form-group{{ $errors->has('quiz_id') ? ' has-danger' : '' }}">
+                                <div class="form-group{{ $errors->has('quiz_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-quiz_id">{{ __('Quiz Title') }}</label>
                                     
                                     <select name="quiz_id" required class="form-control">
-                                        
                                         <option value="{{ $quiz->id }}">{{ $quiz->name}}</option>
-                                        
                                     </select>
 
                                     @if ($errors->has('quiz_id'))
@@ -65,6 +47,43 @@
                                             <strong>{{ $errors->first('quiz_id') }}</strong>
                                         </span>
                                     @endif
+                                </div> 
+
+                                <h6 class="heading-small text-muted mb-4">{{ __('Choices') }}</h6>
+
+                                
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice1">{{ __('Choice1') }}</label>
+                                        <input type="text" name="choice1" id="choice1" class="form-control" placeholder="Choice1" required>
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice2">{{ __('Choice2') }}</label>
+                                        <input type="text" name="choice2" id="choice2" class="form-control" placeholder="Choice2" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice3">{{ __('Choice3') }}</label>
+                                        <input type="text" name="choice3" id="choice3" class="form-control" placeholder="Choice3" >
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="choice4">{{ __('Choice4') }}</label>
+                                        <input type="text" name="choice4" id="choice4" class="form-control" placeholder="Choice4" >
+                                    </div>
+
+
+                                <div class="form-group{{ $errors->has('right_answer') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-right_answer">{{ __('Right Answer') }}</label>
+                                    <input type="text" name="right_answer" id="input-right_answer" class="form-control form-control-alternative{{ $errors->has('right_answer') ? ' is-invalid' : '' }}" placeholder="{{ __('Right Answer') }}" value="{{ old('right_answer') }}" required autofocus>
+
+                                    @if ($errors->has('right_answer'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('right_answer') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
@@ -79,18 +98,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

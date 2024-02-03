@@ -10,11 +10,15 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Question Management') }}</h3>
+                                <h3 class="mb-0">{{ __('Question Management') }}</h3>   
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="{{ route('courses.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
-                            </div>
+                            <div class="col-4 text-right"> 
+                            @foreach(\App\Models\Quiz::orderBy('id', 'desc')->get() as $quiz)
+                               @if($question->quizzes->contains($quiz))
+                                   <a href="{{ route('quizzes.show',$quiz->id) }}" class="btn btn-sm btn-primary">{{ __('Back to  ') }} {{  $quiz->name }} {{ __('Quiz') }}</a><br><br>
+                               @endif 
+                           @endforeach
+                        </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -33,10 +37,33 @@
                                         </span>
                                     @endif
                                 </div>
+
+
+
+
                                 <div>
-                                <label class="form-control-label" for="input-title">{{ __('Answers as words') }}</label>
-                                    <input type="text" name="answers" id="input-title" class="form-control form-control-alternative{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="{{ __('answers') }}" value="{{ $question->answers }}" required autofocus>
+                                <label class="form-control-label" for="choice1">{{ __('Choice1') }}</label>
+                                    <input type="text" name="choice1" id="choice1" class="form-control form-control-alternative{{ $errors->has('choice1') ? ' is-invalid' : '' }}" placeholder="{{ __('choice1') }}" value="{{ $question->choice1 }}" required autofocus>
                              </div>
+
+                             <div>
+                                <label class="form-control-label" for="choice2">{{ __('Choice2') }}</label>
+                                    <input type="text" name="choice2" id="choice2" class="form-control form-control-alternative{{ $errors->has('choice2') ? ' is-invalid' : '' }}" placeholder="{{ __('choice2') }}" value="{{ $question->choice2 }}" required autofocus>
+                             </div>
+
+                             <div>
+                                <label class="form-control-label" for="choice3">{{ __('Choice3') }}</label>
+                                    <input type="text" name="choice3" id="choice3" class="form-control form-control-alternative{{ $errors->has('choice3') ? ' is-invalid' : '' }}" placeholder="{{ __('choice3') }}" value="{{ $question->choice3 }}"  autofocus>
+                             </div>
+
+                             <div>
+                                <label class="form-control-label" for="choice4">{{ __('Choice4') }}</label>
+                                    <input type="text" name="choice4" id="choice4" class="form-control form-control-alternative{{ $errors->has('choice4') ? ' is-invalid' : '' }}" placeholder="{{ __('choice4') }}" value="{{ $question->choice4 }}"  autofocus>
+                             </div>
+
+
+
+
 
                              <div>
                                 <label class="form-control-label" for="input-title">{{ __('Right Answer') }}</label>
@@ -56,10 +83,12 @@
                                     <label class="form-control-label" for="input-quiz_id">{{ __('Quiz Title') }}</label>
                                     
                                     <select name="quiz_id" required class="form-control">
-                                        @foreach(\App\Models\quiz::orderBy('id', 'desc')->get() as $quiz)
-                                        <option value="{{ $quiz->id }}">{{ $quiz->name}}</option>
-                                        @endforeach
-                                    </select>
+    @foreach(\App\Models\Quiz::orderBy('id', 'desc')->get() as $quiz)
+        <option {{ $question->quizzes->contains($quiz) ? 'selected' : '' }} value="{{ $quiz->id }}">
+            {{ \Str::limit($quiz->name, 30) }}
+        </option>
+    @endforeach
+</select>     
 
                                     @if ($errors->has('quiz_id'))
                                         <span class="invalid-feedback" role="alert">

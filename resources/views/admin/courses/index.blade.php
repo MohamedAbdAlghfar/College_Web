@@ -31,9 +31,39 @@
                             </div>  </td>
                             <td> <div class="col-4 text-right">
                                 <a href="{{ route('questions.create') }}" class="btn btn-sm btn-primary">{{ __('Add question') }}</a>
-                            </div> </td> </tr>
+                            </div> </td>
+                        
+                            <td>   <div class="col-4 text-right">
+                                <a href="/courses/deleted" class="btn btn-sm btn-primary">{{ __('course Del By') }}</a>
+                            </div> </td>
+                        
+                            <td>
+    <div class="col-4 text-right">  
+        <form method="POST" action="{{ route('OpenCloseEnroll.openEnroll') }}">
+            @csrf
+            <input type="hidden" name="_method" value="POST">
+            <button type="submit" class="btn btn-sm btn-primary">{{ __('Open enrollCourse') }}</button>
+        </form>
+    </div>
+</td>
+
+
+<td>
+    <div class="col-4 text-right">
+        <form method="POST" action="{{ route('OpenCloseEnroll.closeEnroll') }}">
+            @csrf
+            <input type="hidden" name="_method" value="POST">
+            <button type="submit" class="btn btn-sm btn-primary">{{ __('Close enrollCourse') }}</button>
+        </form>
+    </div>
+</td>
+
+                        </tr>
                             </tr>
                         </div>
+
+
+
 
 </table>
                     </div>
@@ -67,9 +97,9 @@
                             <div class="card">
                                 
                             @if($course->photo)
-                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo">
+                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo" style="width: 100px; height: 100px;"> 
                                 @else
-                                <img  src="/images/default.jpeg" class="card-img-top" alt="Course Photo">
+                                <img  src="/images/default.jpeg" class="card-img-top" alt="Course Photo" style="width: 100px; height: 100px;">
                                 @endif
 
                                 <div class="card-body">

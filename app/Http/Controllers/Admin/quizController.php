@@ -110,6 +110,7 @@ class quizController extends Controller
      */
     public function destroy(quiz $quiz)
     {
+        $quiz->questions()->delete();
         $quiz->delete();
         return redirect('/admin/courses')->withStatus('Quiz successfully deleted.');
     }

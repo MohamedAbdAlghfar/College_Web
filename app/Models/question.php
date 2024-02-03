@@ -9,8 +9,11 @@ class question extends Model
 {
     protected $fillable = [
         'title',
-        'answers', 
-        'right_answer',
+        'choice1', 
+        'choice2',
+        'choice3',
+        'choice4',
+        'right_answer', 
          
         
     ];
@@ -18,7 +21,7 @@ class question extends Model
    
 
     public function quizzes() {
-        return $this->belongsToMany('App\Models\quiz');
+        return $this->belongsToMany('App\Models\quiz'); 
     }
 
 

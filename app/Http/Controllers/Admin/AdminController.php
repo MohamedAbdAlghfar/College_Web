@@ -62,22 +62,30 @@ public function edit(User $admin)
         return redirect()->route('admins.index')->withStatus(__('Admin successfully deleted.'));
     }
 
-    public function update(Request $request, User $admin) 
-    {
-        $rules = [
-            'name' => 'required|string|min:5|max:30',
-            'email' => 'required|email',
-            'password' => 'nullable|min:6|confirmed',
-        ]; 
+    public function update(Request $request, User $admin)
+{
+    $rules = [
+        'name' => 'required|string|min:5|max:30',
+        'email' => 'required|email',
+        'password' => 'nullable|min:6|confirmed',
+    ];
 
-        $this->validate($request, $rules);
+    $this->validate($request, $rules);
 
-        $admin->update(
-            $request->merge(['password' => Hash::make($request->get('password')), "admin" => 1])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+    $data = [
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'admin' => $request->input('admin'),
+        'level' => $request->input('level'),
+    ];
 
-        return redirect()->route('admins.index')->withStatus(__('admin successfully updated.'));
+    if ($request->filled('password')) {
+        $data['password'] = Hash::make($request->input('password'));
     }
+
+    $admin->update($data);
+
+    return redirect()->route('admins.index')->withStatus(__('Admin successfully updated.'));
+}
 
 }

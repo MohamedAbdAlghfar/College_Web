@@ -20,6 +20,8 @@ class courseFactory extends Factory
         'name' => $this->faker->sentence,    	
     	'link' => $this->faker->url,
     	'level' => $this->faker->randomElement([1,2,3,4]),
-        ];
+        'point' => $this->faker->randomElement([1,2,3]),
+        'enrollment_status' => 0,
+               ];
     }
 }

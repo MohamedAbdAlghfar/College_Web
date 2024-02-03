@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\photo;
 use App\Models\course;
+use App\Models\quiz;
 use App\Models\video;
 use Illuminate\Support\Facades\Auth;
 class CourseController extends Controller
@@ -157,14 +158,25 @@ class CourseController extends Controller
             return redirect('/admin/courses')->withStatus('Course successfully updated.');
         }
 
+
+
+        
+
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
     public function destroy(course $course)
     {
+        $course->deleted_by = Auth::user()->id;
+        $course->videos()->delete();
+        $course->quizzes()->delete();
         if($course->photo) {
             $filename = $course->photo->filename;
             unlink('images/'.$filename);
@@ -175,4 +187,15 @@ class CourseController extends Controller
         
         return redirect()->route('courses.index')->withStatus(__('Course successfully deleted.'));
     }
+
+     
+    public function showQuiz(course $course , quiz $quiz)
+    {
+        return view('admin.courses.showQuiz',compact('course','quiz'));
+    }
+
+
+
+
+
 }

@@ -21,14 +21,34 @@ class DatabaseSeeder extends Seeder
         //$this->call([UsersTableSeeder::class]);
         $users = User::factory(10)->create();
         $courses = course::factory(10)->create();
-        foreach ($users as $user) {
-            $courses_ids = [];
-            $courses_ids[] = course::all()->random()->id;
-            $courses_ids[] = course::all()->random()->id;
+   //     foreach ($users as $user) {
+  //          $courses_ids = [];
+ //           $courses_ids[] = course::all()->random()->id;
+ //           $courses_ids[] = course::all()->random()->id;
 
-            $user->courses()->sync( $courses_ids );
+  //          $user->courses()->sync( $courses_ids );
+   //     }
+        ///
+
+        foreach ($users as $user) {
+            $courses = course::inRandomOrder()->limit(3)->get();
+            
+            foreach ($courses as $course) {
+                $pass_course = random_int(-1, 1); 
+                $grade = random_int(0, 100);    
+                $user->courses()->attach($course, [
+                    'pass_course' => $pass_course,
+                    'grade' => $grade,
+                ]);
+            }
         }
-        
+       /////
+
+
+
+
+
+
         photo::factory(5)->create();
  
        $quizzes = quiz::factory(5)->create();
