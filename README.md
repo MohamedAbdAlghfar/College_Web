@@ -60,4 +60,4 @@ Welcome to COLLEGE_WEB, a web application designed for managing college courses,
 
 1. **Clone the repository to your local machine.**
    ```bash
-   git clone https://github.com/your-username/COLLEGE_WEB.git
+   git clone https://github.com/MohamedAbdAlghfar/COLLEGE_WEB.git
