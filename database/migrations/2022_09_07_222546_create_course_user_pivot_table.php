@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('course_user', function (Blueprint $table) {
             
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('course_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('course_id')->constrained();
             $table->integer('pass_course')->default(0);  // 0 => current student course , 1 => passed course , -1 => failed course  
             $table->integer('grade')->default(null)->nullable();
             $table->timestamps();

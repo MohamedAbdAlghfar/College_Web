@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('question_quiz', function (Blueprint $table) {
             
             $table->id();
-            $table->foreignId('question_id');
-            $table->foreignId('quiz_id');
+            $table->foreignId('question_id')->constrained();
+            $table->foreignId('quiz_id')->constrained();
             $table->timestamps();
 
         });
