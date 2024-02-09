@@ -1,64 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# COLLEGE_WEB
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to COLLEGE_WEB, a web application designed for managing college courses, user profiles, and administrative tasks. This platform provides two distinct interfaces: the user side for students to access their courses, grades, and enrollment options, and the admin side for administrators to oversee and manage courses, videos, quizzes, users, and more.
 
-## About Laravel
+## User Side
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1. Courses
+- View a list of available courses.
+- Enroll in courses to build your academic schedule.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 2. Profile
+- Access and update your personal profile information.
+  
+### 3. GPA and Grades
+- Check your GPA.
+- View grades for completed courses.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 4. Enroll Courses
+- Explore available courses.
+- Enroll in new courses to enhance your learning experience.
 
-## Learning Laravel
+## Admin Side
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Manage Courses
+- Add new courses.
+- Edit existing course details.
+- Delete courses that are no longer offered.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Manage Videos
+- Add educational videos.
+- Edit video details.
+- Delete videos that are no longer relevant.
 
-## Laravel Sponsors
+### 3. Manage Quizzes
+- Create quizzes for courses.
+- Edit quiz details.
+- Delete quizzes as needed.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 4. Manage Questions
+- Add questions to quizzes.
+- Edit and update questions.
+- Delete questions that are no longer relevant.
 
-### Premium Partners
+### 5. Grade Management
+- Assign grades to student submissions.
+- Edit grades as needed.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 6. User and Admin Management
+- Add new users and administrators.
+- Edit user and admin profiles.
+- Delete users or administrators as needed.
 
-## Contributing
+### 7. Enrollment Management
+- Open or close course enrollment to manage student registrations.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 8. Course Information
+- View detailed information about courses, including enrollment statistics.
 
-## Code of Conduct
+## Getting Started
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Clone the repository to your local machine.**
+   ```bash
+   git clone https://github.com/MohamedAbdAlghfar/COLLEGE_WEB.git
