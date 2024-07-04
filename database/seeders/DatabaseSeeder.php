@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
                 $pass_course = random_int(-1, 1); 
                 $grade = random_int(0, 100);    
                 $user->courses()->attach($course, [
-                    'pass_course' => $pass_course,
+                    'pass_course' => $pass_course, 
                     'grade' => $grade,
                 ]);
             }

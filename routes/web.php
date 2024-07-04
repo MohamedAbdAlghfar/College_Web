@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 	//Route::resource('admin/users/create', 'App\Http\Controllers\Admin\UserController@create', ['except' => ['show']]);
 
 	//Route::get('admin/users/create', function () {
-	//	return view('admin.users.create');
+	//	return view('admin.users.create'); 
 	//});
 
 	Route::resource('admin/admins', 'App\Http\Controllers\Admin\AdminController', ['except' => ['show']]);
