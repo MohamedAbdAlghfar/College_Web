@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 
 	
 	//Courses route 
-	Route::resource('admin/courses', 'App\Http\Controllers\Admin\CourseController');
+	Route::resource('admin/courses', 'App\Http\Controllers\Admin\CourseController'); 
 	Route::get('admin/showCourseQuiz/{course}/{quiz}', 'App\Http\Controllers\Admin\CourseController@showQuiz')->name('courses.showQuiz'); 
 
 	Route::post('/courses/openEnroll', 'App\Http\Controllers\Admin\OpenCloseEnrollController@openEnroll')->name('OpenCloseEnroll.openEnroll');

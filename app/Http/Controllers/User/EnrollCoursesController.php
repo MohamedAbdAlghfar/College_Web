@@ -22,7 +22,7 @@ class EnrollCoursesController extends Controller
              $subQuery->where('user_id', $user->id);
          });
      })
-     ->get();
+     ->get(); 
           return view('user.courses.enrollCourses',compact('courses','user'));
       //    return response()->json($courses);
 
@@ -35,18 +35,29 @@ class EnrollCoursesController extends Controller
      $user = User::find($user_id);
      $course = Course::find($course_id);
      if($user->gpa > 2 && $user->total_hours + $course->point <= 18 ){
+       if($user->courses()->where('course_id', $course->id)->exists()){
+       $user->courses()->updateExistingPivot($course->id, ['pass_course' => 0 , 'grade' => null]);
+       }
+       else{
         $user->courses()->attach($course, [
             'pass_course' => 0,
             'grade' => null
         ]);
+        }
         $user->total_hours = $user->total_hours + $course->point ;
         $user->update();   
     }
      elseif($user->gpa <= 2 && $user->total_hours + $course->point <= 15 ){
+
+       if($user->courses()->where('course_id', $course->id)->exists()){
+       $user->courses()->updateExistingPivot($course->id, ['pass_course' => 0 , 'grade' => null]);
+       }
+       else{
         $user->courses()->attach($course, [
             'pass_course' => 0,
             'grade' => null
         ]);
+        }
         $user->total_hours = $user->total_hours + $course->point ;
         $user->update(); 
     }

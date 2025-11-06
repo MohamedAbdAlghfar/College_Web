@@ -182,6 +182,12 @@ class CourseController extends Controller
             $filename = $course->photo->filename;
             unlink('images/'.$filename);
         }
+
+       foreach($course->Users as $user){
+       $user->total_hours = $user->total_hours - $course->point;
+       $user->save();
+       }
+
         // delete course photo
         $course->photo->delete();
         $course->delete();

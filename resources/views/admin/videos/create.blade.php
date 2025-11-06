@@ -42,7 +42,7 @@
                                             <strong>{{ $errors->first('link') }}</strong>
                                         </span>
                                     @endif
-                                </div>
+                                </div> 
 
                                 <div class="form-group{{ $errors->has('course_id') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-course_id">{{ __('Course Title') }}</label>

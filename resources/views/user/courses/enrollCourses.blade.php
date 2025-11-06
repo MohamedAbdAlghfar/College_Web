@@ -1,130 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.plain')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        body {
-            background-color: #737CA1; /* Set your preferred background color */
-            margin: 0;
-            padding: 0;
-        }
+@section('content')
+    <div class="header position-relative"
+         style="background-color: #2196f3; min-height: 100vh; padding-top: 60px; padding-bottom: 60px;">
+        
+        <div class="container text-center">
+            {{-- Page Title --}}
+            <h1 class="text-white fw-bold mb-5" style="font-family: monospace;">All Courses</h1>
 
-        .container-fluid {
-            padding: 20px;
-        }
+            {{-- Course Grid --}}
+            <div class="row justify-content-center">
+                @foreach($courses as $course)
+                    <div class="col-md-3 mb-4">
+                        <div class="card shadow-lg border-0 rounded-4 h-100 d-flex flex-column" style="min-height: 420px;">
+                            
+                            {{-- Course Image --}}
+                            @if($course->photo)
+                                <img src="/images/{{ $course->photo->filename }}" 
+                                     class="card-img-top" 
+                                     alt="Course Photo" 
+                                     style="height: 180px; object-fit: cover;">
+                            @else
+                                <img src="/images/default.jpeg" 
+                                     class="card-img-top" 
+                                     alt="Course Photo" 
+                                     style="height: 180px; object-fit: cover;">
+                            @endif
 
-        .card {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+                            {{-- Card Body --}}
+                            <div class="card-body d-flex flex-column text-start justify-content-between">
+                                <div>
+                                    <h5 class="fw-bold text-primary mb-2">{{ \Str::limit($course->name, 50) }}</h5>
+                                    <p class="mb-1"><strong>Level:</strong> {{ $course->level }}</p>
+                                    <p class="mb-3"><strong>Point:</strong> {{ $course->point }}</p>
+                                </div>
 
-        .card-img-top {
-            width: 100%;
-            height: 50%;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .enroll-button {
-            background-color: red;
-            color: white;
-            border: 1px solid black;
-            padding: 10px;
-            font-size: 16px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .back-button {
-            background-color: red;
-            color: white;
-            border: 1px solid black;
-            padding: 10px;
-            font-size: 16px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: -10px;
-        }
-
-        .col-sm-3 {
-            flex: 0 0 calc(25% - 20px);
-            margin: 10px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h1> .All Courses</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        @foreach($courses as $course)
-                        <div class="col-sm-3">
-                            <div class="card">
-                                @if($course->photo)
-                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo">
-                                @else
-                                <img src="/images/default.jpeg" class="card-img-top" alt="Course Photo">
-                                @endif
-
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ \Str::limit($course->name, 100) }}</h5>
-                                    <h5 class="card-title">LEVEL: {{ $course->level }}</h5>
-                                    <h5 class="card-title">POINT: {{ $course->point }}</h5>
-
-                                    <form method="POST" action="{{ route('Enroll.Enroll',$course) }}">
+                                {{-- Enroll Button --}}
+                                <div class="mt-auto">
+                                    <form method="POST" action="{{ route('Enroll.Enroll', $course) }}">
                                         @csrf
-                                        <input type="hidden" name="_method" value="POST">
-                                        <button type="submit" class="enroll-button">{{ __('ENROLL') }}</button>
+                                        <button type="submit" 
+                                                class="btn btn-outline-primary w-100 fw-bold mt-2">
+                                            Enroll
+                                        </button>
                                     </form>
-                                    <br><hr>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                @endforeach
+            </div>
 
-                    <br><br><br>
-                    <a href="{{route('home.user') }}" class="back-button"> BACK </a>
+            {{-- Back Button --}}
+            <div class="mt-5">
+                <a href="{{ route('home.user') }}" class="btn btn-light text-primary fw-bold px-4 py-2">
+                    ← Back
+                </a>
+            </div>
 
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-
-                        </nav>
-                    </div>
-                </div>
+            {{-- Footer --}}
+            <div class="mt-5 text-light small">
+                <p>Contact: 
+                    <a href="mailto:mohamedabdodv@gmail.com" class="text-white">mohamedabdodv@gmail.com</a> 
+                    (Business only) 
+                </p>
             </div>
         </div>
+
+        {{-- Wave Decoration --}}
+        <div class="position-absolute bottom-0 start-0 w-100">
+            <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff" d="M0,64L80,53.3C160,43,320,21,480,16C640,11,800,21,960,37.3C1120,53,1280,75,1360,85.3L1440,96L1440,120L0,120Z"></path>
+            </svg>
+        </div>
     </div>
-
-</body>
-
-</html>
+@endsection

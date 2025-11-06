@@ -17,11 +17,11 @@ class videoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $videos = video::all();
-        return view('admin.videos.index',compact('videos'));
-    }
+    // public function index()
+    // {
+    //     $videos = video::all();
+    //     return view('admin.videos.index',compact('videos'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -48,9 +48,11 @@ class videoController extends Controller
             'course_id' => 'required|integer',
         ];
 
+        
+
         $this->validate($request, $rules);
 
-        $video = Video::create($request->all());
+        $video = Video::create($request->all()); 
 
         if($video) {
             return redirect('/admin/courses')->withStatus('Video successfully created.');
@@ -109,11 +111,12 @@ class videoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
-    public function destroy(video $video)
+    public function destroy(Request $request, video $video)
     {
-        $video->delete();
-        return redirect('/admin/courses')->withStatus('Video successfully deleted.');
+        $courseId = $request->input('course_id');
+        $video->delete(); 
+        return redirect("/admin/courses/$courseId")->withStatus('Video successfully deleted.');
     }
 }

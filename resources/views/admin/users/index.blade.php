@@ -181,16 +181,7 @@
                     <i class="ni ni-planet text-blue"></i> {{ __('Courses') }}
                 </a>
             </li>
-            <li class="nav-item">
-                    <a class="nav-link" href="{{ route('videos.index') }}">
-                        <i class="ni ni-planet text-blue"></i> {{ __('videos') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('quizzes.index') }}">
-                        <i class="ni ni-planet text-blue"></i> {{ __('quizzes') }}
-                    </a>
-                </li>
+         
                 
 
 

@@ -17,11 +17,11 @@ class quizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $quizzes = quiz::all();
-        return view('admin.quizzes.index',compact('quizzes'));
-    }
+    // public function index()
+    // {
+    //     $quizzes = quiz::all();
+    //     return view('admin.quizzes.index',compact('quizzes'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -108,10 +108,11 @@ class quizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(quiz $quiz)
+    public function destroy(Request $request, quiz $quiz)
     {
+        $courseId = $request->input('course_id');
         $quiz->questions()->delete();
         $quiz->delete();
-        return redirect('/admin/courses')->withStatus('Quiz successfully deleted.');
+        return redirect("/admin/courses/$courseId")->withStatus('Quiz successfully deleted.');
     }
 }

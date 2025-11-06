@@ -1,152 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.plain')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grades</title>
-    <style type="text/css">
-        body {
-            background-color: #737CA1;
-            margin: 0;
-            padding: 0;
-        }
+@section('content')
+    <div class="header position-relative" style="background-color: #2196f3;">
+        <div class="container text-center py-5 position-relative" style="z-index: 2;">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-11">
+                    <div class="p-5 rounded-4 shadow-lg bg-white">
+                        <h1 class="fw-bold text-primary mb-4">Grades</h1>
+                        <h4 class="mb-5 text-dark">GPA: <strong>{{ $user->gpa }}</strong></h4>
 
-        .container-fluid {
-            padding: 20px;
-        }
+                        <div class="row justify-content-center">
+                            @foreach($courses as $course)
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex">
+                                    <div class="card border-0 shadow-sm flex-fill d-flex flex-column">
+                                        @if($course->photo)
+                                            <img src="/images/{{$course->photo->filename}}" class="card-img-top"
+                                                 alt="Course Photo" style="height: 150px; object-fit: cover;">
+                                        @else
+                                            <img src="/images/default.jpeg" class="card-img-top"
+                                                 alt="Default Image" style="height: 150px; object-fit: cover;">
+                                        @endif
 
-        .card {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="fw-bold text-primary">{{ \Str::limit($course->name, 80) }}</h5>
+                                            <p class="mb-1"><strong>Level:</strong> {{ $course->level }}</p>
+                                            <p class="mb-1"><strong>Point:</strong> {{ $course->point }}</p>
+                                            <p class="mb-1"><strong>Grade:</strong> {{ $course->pivot->grade }}</p>
 
-        .card-img-top {
-            width: 100%;
-            height: auto;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .back-button {
-            background-color: red;
-            color: white;
-            border: 1px solid black;
-            padding: 5px 10px;
-            font-size: 16px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: -10px;
-        }
-
-        .col-sm-3 {
-            flex: 0 0 calc(25% - 20px);
-            margin: 10px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        h5 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        hr {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 0;
-            border-top: 1px solid #ddd;
-        }
-
-        .passed {
-            color: #00CC66;
-        }
-
-        .failed {
-            color: brown;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h1>..Grades</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h2>.GPA :: {{ $user->gpa }}</h2>
-
-                    <div class="row">
-                        @foreach($courses as $course)
-                        <div class="col-sm-3">
-                            <div class="card">
-                                @if($course->photo)
-                                <img src="/images/{{$course->photo->filename}}" class="card-img-top" alt="Course Photo">
-                                @else
-                                <img src="/images/default.jpeg" class="card-img-top" alt="Course Photo">
-                                @endif
-
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ \Str::limit($course->name, 100) }}</h5>
-                                    <h5 class="card-title">LEVEL: {{ $course->level }}</h5>
-                                    <h5 class="card-title">POINT: {{ $course->point }}</h5>
-                                    <h5 class="card-title">GRADE: {{ $course->pivot->grade }}</h5>
-
-                                    @if($course->pivot->grade >= 60)
-                                    <h5 class="passed">Passed</h5>
-                                    @else
-                                    <h5 class="failed">Failed</h5>
-                                    @endif
-
-                                    <br><hr>
+                                            @if($course->pivot->grade >= 60)
+                                                <p class="text-success fw-bold mt-2">Passed</p>
+                                            @else
+                                                <p class="text-danger fw-bold mt-2">Failed</p>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                    </div>
 
-                    <br><br><br>
-                    <a href="{{route('home.user')}}" class="back-button"> BACK </a>
-
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-
-                        </nav>
+                        <a href="{{ route('home.user') }}" class="btn btn-danger mt-4">Back</a>
                     </div>
                 </div>
             </div>
         </div>
 
+        {{-- Decorative wave at the very bottom --}}
+        <div class="position-absolute bottom-0 start-0 w-100" style="z-index: 1;">
+            <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff"
+                      d="M0,64L80,53.3C160,43,320,21,480,16C640,11,800,21,960,37.3C1120,53,1280,75,1360,85.3L1440,96L1440,120L0,120Z"></path>
+            </svg>
+        </div>
     </div>
 
-</body>
-
-</html>
+    <div class="container mt--10 pb-5"></div>
+@endsection

@@ -176,7 +176,7 @@
             margin: 0px;
             padding: 0px;
             position: relative;
-            position: right-bottom;
+            position: right-bottom; 
         }
 
         .buttons {

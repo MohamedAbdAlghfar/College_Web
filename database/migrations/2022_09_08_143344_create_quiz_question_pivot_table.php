@@ -17,7 +17,7 @@ return new class extends Migration
             
             $table->id();
             $table->foreignId('question_id')->unsigned();
-            $table->foreignId('quiz_id')->constrained();
+            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
