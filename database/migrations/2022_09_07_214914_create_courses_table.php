@@ -33,9 +33,11 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('courses', function (Blueprint $table) {
-            $table->dropForeign(['deleted_by']);
-        });
-        Schema::dropIfExists('courses');
+    Schema::table('courses', function (Blueprint $table) {
+        $table->dropForeign(['deleted_by']);
+        $table->dropColumn('deleted_by');
+    });
+
+    Schema::dropIfExists('courses');
     }
 };

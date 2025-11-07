@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 
@@ -38,7 +39,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Change the password
+     * Change the password 
      *
      * @param  \App\Http\Requests\PasswordRequest  $request
      * @return \Illuminate\Http\RedirectResponse
