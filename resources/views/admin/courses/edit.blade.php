@@ -44,9 +44,9 @@
                                     @endif
                                 </div>                       
 <div>
-                                 <!-- level  --> 
+                                 <!-- level  -->  
                                  <label class="form-control-label" for="input-level">{{ __('Level') }}</label>
-                                 <input type="text" placeholder="{{ __('Level') }}" value="{{ old('level', $course->level) }}"  name="level"/><br><br>
+                                 <input type="number" placeholder="{{ __('Level') }}" value="{{ old('level', $course->level) }}"  name="level"/><br><br>
                                <!-- level  -->                              
 
                                <label class="form-control-label" for="input-point">{{ __('Point') }}</label>

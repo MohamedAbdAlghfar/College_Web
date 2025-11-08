@@ -156,7 +156,7 @@
                         <td>
                             <form method="post" action="{{ route('ShowCurrentCourse.storeUserGrade', ['course_id' => $course, 'user_id' => $user]) }}" autocomplete="off">
                                 @csrf
-                                <input type="number" id="grade" name="grade" placeholder="Enter grade">
+                                <input type="number" id="grade" name="grade" placeholder="Enter grade" min="0" max="100" >
                                 <button type="submit" id="submit">SAVE</button>
                             </form> 
                         </td>

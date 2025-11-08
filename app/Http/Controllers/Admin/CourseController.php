@@ -57,7 +57,7 @@ class CourseController extends Controller
             'name' => 'required|max:150',
             'level' => 'required|integer|in:1,2,3,4',
             'link' => 'required',
-            'point' => 'required',
+            'point' => 'required|in:0,2,3,4',
             
         ];
 
@@ -119,7 +119,8 @@ class CourseController extends Controller
     {
         $rules = [
             'name' => 'required|max:150',
-           // 'level' => 'required|integer|in:1,2,3,4',
+            'level' => 'required|integer|in:1,2,3,4',
+            'point' => 'required|in:0,2,3,4'
            // 'link' => 'required|url',
             
         ];

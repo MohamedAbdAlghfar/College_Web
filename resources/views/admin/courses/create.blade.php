@@ -46,7 +46,7 @@
                                 </div>
 
 
-                                
+                                 
 
                                 <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-image">{{ __('Image') }}</label>
@@ -59,7 +59,7 @@
                                     @endif
                                 </div>
                               <!-- level  --> 
-                              <input type="text" placeholder="LeveL" name="level"/><br><br>
+                              <input type="number" placeholder="LeveL" name="level"/><br><br>
                                <!-- level  --> 
                                <input type="number" placeholder="point" name="point"/> 
                                 <div class="text-center">

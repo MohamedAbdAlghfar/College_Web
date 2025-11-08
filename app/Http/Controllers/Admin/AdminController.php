@@ -45,6 +45,14 @@ class AdminController extends Controller
     
 public function store(UserRequest $request, User $model)
 { 
+        $rules = [
+            'name' => 'required|string|min:2|max:30',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6|confirmed',
+            'level' => 'required|integer|in:1,2,3,4',  
+        ];
+
+        $this->validate($request, $rules);
     $model->create($request->merge(['password' => Hash::make($request->get('password')), "admin" => 1, "level" => $request->get('level')])->all());
     
     return redirect()->route('admins.index')->withStatus(__('Admin successfully created.'));
@@ -65,12 +73,13 @@ public function edit(User $admin)
     public function update(Request $request, User $admin)
 {
     $rules = [
-        'name' => 'required|string|min:5|max:30',
-        'email' => 'required|email',
-        'password' => 'nullable|min:6|confirmed',
+            'name' => 'required|string|min:2|max:30',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6|confirmed',
+            'level' => 'required|integer|in:1,2,3,4',
     ];
 
-    $this->validate($request, $rules);
+    $this->validate($request, $rules); 
 
     $data = [
         'name' => $request->input('name'),

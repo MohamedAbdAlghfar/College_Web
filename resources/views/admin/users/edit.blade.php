@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('User Management') }}</h3>
+                                <h3 class="mb-0">{{ __('User Management') }}</h3> 
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('users.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
@@ -43,7 +43,7 @@
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
-                                </div>
+                                </div> 
                             
                                 <label class="form-control-label" for="input-level">{{ __('Level') }}</label>
                                     <input type="number" name="level" id="input-level" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Level') }}" value="{{ old('name', $user->level) }}" required autofocus>

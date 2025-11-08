@@ -45,6 +45,14 @@ class UserController extends Controller
 
 public function store(UserRequest $request, User $model)
     { 
+        $rules = [
+            'name' => 'required|string|min:2|max:30',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6|confirmed',
+            'level' => 'required|integer|in:1,2,3,4',  
+        ];
+
+        $this->validate($request, $rules);
         $model->create($request->merge(['password' => Hash::make($request->get('password')), "level" => $request->get('level')])->all());
 
         return redirect()->route('users.index')->withStatus(__('User successfully created.'));
@@ -60,9 +68,10 @@ public function store(UserRequest $request, User $model)
     public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => 'required|string|min:5|max:30',
+            'name' => 'required|string|min:2|max:30',
             'email' => 'required|email',
             'password' => 'nullable|min:6|confirmed',
+            'level' => 'required|integer|in:1,2,3,4',
         ];
     
         $this->validate($request, $rules);
